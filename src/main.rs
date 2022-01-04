@@ -1,3 +1,4 @@
+use clap::Parser;
 use fanotify::high_level::*;
 use fanotify::high_level::FanEvent::OpenExecPerm;
 use fanotify::high_level::FanotifyResponse::Allow;
@@ -6,11 +7,19 @@ use fanotify::low_level;
 use nix::poll::{poll, PollFd, PollFlags};
 use sysinfo::{ProcessExt, ProcessRefreshKind, RefreshKind, System, SystemExt};
 
+#[derive(Parser, Debug)]
+#[clap(about, version, author)]
+struct Args {
+    path: String,
+}
+
 fn main() {
+    let args = Args::parse();
+
     let mut system = System::new_with_specifics(RefreshKind::new().with_processes(ProcessRefreshKind::everything()));
 
     let fan = Fanotify::new_with_nonblocking(FanotifyMode::CONTENT);
-    fan.add_mountpoint(FAN_OPEN_EXEC_PERM | FAN_OPEN_PERM, "/tmp/foo").unwrap();
+    fan.add_mountpoint(FAN_OPEN_EXEC_PERM | FAN_OPEN_PERM, &args.path).unwrap();
 
     more_magic::initialize();
     println!("polling");

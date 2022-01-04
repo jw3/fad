@@ -10,6 +10,7 @@ nix = "0.19"
 fanotify-rs = { git = "https://github.com/Serinalice/fanotify-rs" }
 sysinfo = "0.22"
 more-magic = { path = "more-magic" }
+clap = { version = "3.0", features = ["derive"] }
 
 [workspace]
 members = [
