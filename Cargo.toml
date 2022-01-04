@@ -1,0 +1,17 @@
+[package]
+name = "fad"
+description = "Not fapolicyd"
+version = "0.1.0"
+license = "GPL-3.0-or-later"
+edition = "2021"
+
+[dependencies]
+nix = "0.19"
+fanotify-rs = { git = "https://github.com/Serinalice/fanotify-rs" }
+sysinfo = "0.22"
+more-magic = { path = "more-magic" }
+
+[workspace]
+members = [
+    "more-magic"
+]
