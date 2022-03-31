@@ -1,7 +1,7 @@
 file access debug
 ===
 
-like fapolicyd but worse in most ways
+Produce a fapolicyd like log from fanotify events
 
 ### run
 
@@ -13,4 +13,3 @@ run the app `fad /tmp/foo`
 
 - https://github.com/linux-application-whitelisting/fapolicyd
 - https://github.com/Serinalice/fanotify-rs
-- 

@@ -50,8 +50,8 @@ fn main() -> Result<(), Box<dyn Error>> {
                 };
                 let uid = p.uid;
                 let gid = p.gid;
-                let exe = p.exe().to_str().unwrap();
-                let path = event.path.as_str();
+                let exe = p.exe().display().to_string();
+                let path = event.path;
                 let mime = ext.ftype;
 
                 // rule=9 dec=allow perm=execute uid=1003 gid=100 pid=5555 exe=/usr/bin/bash : path=/usr/bin/vi ftype=application/x-executable
